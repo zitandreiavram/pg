@@ -8,8 +8,9 @@ var app = {
     deviceready: function() {
         // note that this is an event handler so the scope is that of the event
         // so we need to call app.report(), and not this.report()
+    	app.myLog.value+="Device ready \n";
+    	app.register();
         app.report('deviceready');
-        app.register();
     },
     report: function(id) { 
         console.log("report:" + id);
@@ -19,6 +20,7 @@ var app = {
         completeElem.className = completeElem.className.split('hide').join('');
     },
     register: function() {
+    	app.myLog.value+="Register \n";
         var pushNotification = window.plugins.pushNotification;
         pushNotification.registerDevice({alert:true, badge:true, sound:true}, function(status) {
             app.myLog.value+=JSON.stringify(['registerDevice status: ', status])+"\n";

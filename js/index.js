@@ -32,17 +32,21 @@ var app = {
     },
     myLog: document.getElementById("log"),
     storeToken: function(token) {
+    	app.myLog.value+="Token is " + token + "\n";
         console.log("Token is " + token);
         var xmlhttp=new XMLHttpRequest();
         xmlhttp.open("POST","http://127.0.0.1:8888",true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send("token="+token+"&message=pushnotificationtester");
+        app.myLog.value+="Token 2 \n";
         xmlhttp.onreadystatechange=function() {
+        	app.myLog.value+="Token 3 \n";
             if (xmlhttp.readyState==4) {
                 //a response now exists in the responseTest property.
                 console.log("Registration response: " + xmlhttp.responseText);
                 app.myLog.value+="Registration server returned: " + xmlhttp.responseText;
             }
         }
+        app.myLog.value+="Token 4 \n";
     }
 };

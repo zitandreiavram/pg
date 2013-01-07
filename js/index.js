@@ -22,10 +22,12 @@ var app = {
     register: function() {
     	app.myLog.value+="Register \n";
         var pushNotification = window.plugins.pushNotification;
+        app.myLog.value+="Register 2 \n";
         pushNotification.registerDevice({alert:true, badge:true, sound:true}, function(status) {
             app.myLog.value+=JSON.stringify(['registerDevice status: ', status])+"\n";
             app.storeToken(status.deviceToken);
         });
+        app.myLog.value+="Register 3 \n";
     },
     myLog: document.getElementById("log"),
     storeToken: function(token) {
